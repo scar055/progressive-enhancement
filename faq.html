@@ -34,7 +34,10 @@
 					display: inline-block;
 					margin-right: .25em;
 					font-size: 2em;
-					transition: transform 0.2s ease;
+
+					@media (prefers-reduced-motion: no-preference) {
+						transition: transform 0.2s ease;
+					}
 				}
 
 				[open] &::before {
