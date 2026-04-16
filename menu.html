@@ -14,6 +14,16 @@
 		/* Hint: kijk eens naar :target
 			   https://developer.mozilla.org/en-US/docs/Web/CSS/:target */
 
+		@keyframes slide-in {
+			from {
+				transform: translateX(-100%);
+			}
+
+			to {
+				transform: translateX(0);
+			}
+		}
+
 		button {
 			border: none;
 			background-color: var(--blue);
@@ -24,9 +34,9 @@
 
 		nav {
 			background-color: var(--green);
-			height: 100vh;
 			border: none;
 			margin: 0;
+			padding: 0;
 
 			button {
 				background-color: transparent;
