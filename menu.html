@@ -24,14 +24,6 @@
 			}
 		}
 
-		@supports selector(popover) {
-			nav {
-				height: 100vh;
-				animation-name: slide-in;
-				animation-duration: .5s;
-			}
-		}
-
 		button {
 			border: none;
 			background-color: var(--blue);
@@ -45,9 +37,10 @@
 			border: none;
 			margin: 0;
 			padding: 0;
+			width: 30vw;
 
 			button {
-				background-color: transparent;
+				display: none;
 			}
 
 			ul {
@@ -62,10 +55,8 @@
 						justify-content: flex-end;
 					}
 
-					@supports not selector(popover) {
-						button {
-							display: none;
-						}
+					button {
+						display: none;
 					}
 
 
@@ -82,6 +73,22 @@
 						}
 					}
 				}
+			}
+
+			@supports selector(popover) {
+				height: 100vh;
+				animation-name: slide-in;
+				animation-duration: .5s;
+
+				ul {
+					li {
+						button {
+							display: inline-block;
+							background-color: transparent;
+						}
+					}
+				}
+
 			}
 		}
 
