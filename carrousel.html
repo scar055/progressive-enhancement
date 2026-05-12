@@ -1,42 +1,108 @@
 <!doctype html>
 <html lang="nl">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
-		<title>Carrousel / Progressive Enhancement / FDND</title>
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-		<link href="assets/styles.css" rel="stylesheet">
-		<style>
-			/* Hint: welk layout model is handig om content naast elkaar te zetten? */
-		</style>
-		<script type="module">
-			/* Schrijf hier eventueel je client-side JavaScript */
-		</script>
-	</head>
-	<body>
-		<h1>Carrousel</h1>
 
-		<!-- Content: 
-		
-		“Websites leren bouwen, én praktijkervaring opdoen?”
-		
-		“FDND is de enige HBO-opleiding voor Frontend Development in Nederland, in twee jaar stomen wij jou klaar voor het werkveld”
-		
-		“Je werkt bij ons aan échte projecten voor échte opdrachtgevers”
-		
-		“In het studiomodel werken studenten onder begeleiding van coaches en experts uit het vakgebied aan praktijkgerichte opdrachten”
-		
-		“Bij FDND leer je websites bouwen en andere belangrijke skills die jij in de praktijk toe kan passen”
-		
-		“Een Associate degree-opleiding is een tweejarige hbo-opleiding op niveau 5”
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Carrousel / Progressive Enhancement / FDND</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+		rel="stylesheet">
+	<link href="assets/styles.css" rel="stylesheet">
+	<style>
+		/* Hint: welk layout model is handig om content naast elkaar te zetten? */
+		ul {
+			width: 100%;
+			display: flex;
+			list-style: none;
+			padding: 0;
+			margin: 0 0 5em 0;
+			align-items: center;
+			overflow-x: auto;
+			overscroll-behavior-x: contain;
+			scroll-snap-type: x mandatory;
+			anchor-name: --carousel;
 
-		-->
+			&::scroll-button(*) {
+				position: fixed;
+				font-size: 16px;
+				border-radius: 10px;
+				margin-inline: 1em;
+				padding: 1em 3em;
+				border: none;
+				color: var(--green);
+				background: var(--blue);
+				position-anchor: --carousel;
+				position-visibility: always;
+			}
 
-		<details open>
-			<summary>Demo video</summary>
-			<video src="assets/carrousel.mp4" width="1298" height="469" controls muted loop>
-				<a href="assets/carrousel.mp4">assets/carrousel.mp4</a>
-			</video>
-		</details>
-	</body>
+			&::scroll-button(right) {
+				position-area: inline-end block-end;
+				content: 'Volgende';
+			}
+
+			&::scroll-button(left) {
+				position-area: inline-start block-end;
+				content: 'Vorige';
+			}
+
+
+
+
+			li {
+				flex: 0 0 70%;
+				height: 5em;
+				text-align: center;
+				font-size: 1.5em;
+				padding: 10% 8%;
+				font-weight: bolder;
+				font-style: italic;
+				scroll-snap-align: center;
+
+				@media (width >=550px) {
+					font-size: 5em;
+				}
+
+				&:nth-of-type(3n + 1) {
+					background-color: var(--purple);
+				}
+
+				&:nth-of-type(3n + 2) {
+					background-color: var(--yellow);
+				}
+
+				&:nth-of-type(3n + 3) {
+					background-color: var(--green);
+				}
+			}
+		}
+	</style>
+	<script type="module">
+		/* Schrijf hier eventueel je client-side JavaScript */
+	</script>
+</head>
+
+<body>
+	<h1>Carrousel</h1>
+	<ul>
+		<li>“Websites leren bouwen, én praktijkervaring opdoen?”</li>
+		<li>“FDND is de enige HBO-opleiding voor Frontend Development in Nederland, in twee jaar stomen wij jou klaar
+			voor het
+			werkveld”
+		</li>
+		<li>“Je werkt bij ons aan échte projecten voor échte opdrachtgevers”</li>
+		<li>“In het studiomodel werken studenten onder begeleiding van coaches en experts uit het vakgebied aan
+			praktijkgerichte
+			opdrachten”
+		</li>
+		<li>“Bij FDND leer je websites bouwen en andere belangrijke skills die jij in de praktijk toe kan passen”</li>
+		<li>“Een Associate degree-opleiding is een tweejarige hbo-opleiding op niveau 5”</li>
+	</ul>
+	<details>
+		<summary>Demo video</summary>
+		<video src="assets/carrousel.mp4" width="1298" height="469" controls muted loop>
+			<a href="assets/carrousel.mp4">assets/carrousel.mp4</a>
+		</video>
+	</details>
+</body>
+
 </html>
